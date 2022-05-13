@@ -1,0 +1,42 @@
+#1#-- when fetching data from a local path on your PC
+
+## import the below libraries
+
+%matplotlib inline
+import pandas as pd
+import csv
+import pylab as pl
+
+## fetch the data from CSV file and diplay on a screen
+
+Dataset_File = ('/Users/Emma/Python_MYSql/Kak_Baseline_Test_revised.csv')
+Dataset_Variables = pd.read_csv(Dataset_File)
+Dataset_Variables
+
+
+
+
+--------------------------------------------------------------------
+
+
+
+#2#  -- fetchng data from the database (using mysql)
+
+
+# In the python cmd, install packages:
+#pip3 install pymysql
+#pip3 install ipython-sql
+#pip3 install mysqlclient
+
+# in the jupyter notebook:
+import pymysql
+import pandas as pd
+
+
+## ----fetch the data from CSV file and diplay on a screen--------- you can also fetch data from an online DB by cahnging the below connection string
+
+conn=pymysql.connect(host='localhost',port=int(3306),user='root',passwd='YOUR_PASSWORD',db='YOUR_DATABASENAME')
+
+df=pd.read_sql_query("SELECT * FROM 'YOUR_TABLENAME' ",conn)
+
+print(df)
